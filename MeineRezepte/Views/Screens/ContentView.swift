@@ -27,6 +27,7 @@ struct ContentView: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
+                .opacity(0.5)
 
             VStack(spacing: 20) {
                 // Titel und Bild
@@ -76,7 +77,7 @@ struct ContentView: View {
 
                 // Login-Button
                 Button(action: handleLogin) {
-                    Text("Einloggen")
+                    Label("Einloggen",systemImage: "fork.knife")
                         .foregroundColor(.white)
                         .padding()
                         .frame(width: 200)

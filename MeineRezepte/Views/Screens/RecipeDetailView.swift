@@ -18,6 +18,7 @@ struct RecipeDetailView: View {
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()
+                .opacity(0.5)
             
             ScrollView {
                 VStack(alignment: .center, spacing: 20) {
