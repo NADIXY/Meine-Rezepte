@@ -7,8 +7,8 @@
 
 import Foundation
 enum Content {
-    static let correctUsername = "User1"
-    static let correctPassword = "12345"
+    static let correctUsername = "U"
+    static let correctPassword = "1"
     
     static let defaultRecipes = [
         Recipe(
@@ -79,4 +79,7 @@ enum Content {
             description: "Ein saftiger Schokoladenkuchen, perfekt für Naschkatzen.",
             ingredients: ["Schokolade", "Mehl", "Zucker", "Eier", "Butter"],
             foodImage: .schokoladenkuchen,
-            date: Date(timeIntervalSince1970: 1000000))]}
+            date: Date(timeIntervalSince1970: 1000000)
+        )
+    ]
+}

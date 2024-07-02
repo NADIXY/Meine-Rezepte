@@ -8,28 +8,41 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var recipes = Content.defaultRecipes
+    @Binding var recipes: [Recipe]
+    @Binding var favoritesCount: Int
+    @Binding var shoppingList: [String]
 
     var body: some View {
         TabView {
+            // Tab für die Liste der Rezepte
             NavigationView {
-                List {
-                    ForEach($recipes) { $recipe in
-                        RecipeListItemView(recipe: $recipe)
-                    }
-                }
-                .navigationTitle("Rezepte")
+                RecipeListView(recipes: $recipes, favoritesCount: $favoritesCount, shoppingList: $shoppingList)
+                    .navigationTitle("Rezepte")
             }
             .tabItem {
-                Image(systemName: "list.dash")
-                Text("Rezepte")
+                Label("Rezepte", systemImage: "fork.knife")
             }
+            .badge(favoritesCount)
 
-            // Weitere Tabs hier hinzufügen, falls erforderlich
+            Text("Einkaufsliste")
+                .tabItem {
+                    Label("Einkaufsliste", systemImage: "cart")
+                }
+                .badge(shoppingList.count)
+
+            Text("Einstellungen")
+                .tabItem {
+                    Label("Einstellungen", systemImage: "gear")
+                }
+        }
+      
         }
     }
-}
+  
 
-#Preview {
-    MainView()
+
+struct MainView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView(recipes: .constant(Content.defaultRecipes), favoritesCount: .constant(0), shoppingList: .constant([]))
+    }
 }
