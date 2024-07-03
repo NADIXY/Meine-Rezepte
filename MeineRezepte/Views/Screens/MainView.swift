@@ -11,7 +11,7 @@ struct MainView: View {
     @Binding var recipes: [Recipe]
     @Binding var favoritesCount: Int
     @Binding var shoppingList: [String]
-
+    
     var body: some View {
         TabView {
             // Tab für die Liste der Rezepte
@@ -23,22 +23,20 @@ struct MainView: View {
                 Label("Rezepte", systemImage: "fork.knife")
             }
             .badge(favoritesCount)
-
+            
             Text("Einkaufsliste")
                 .tabItem {
                     Label("Einkaufsliste", systemImage: "cart")
                 }
                 .badge(shoppingList.count)
-
+            
             Text("Einstellungen")
                 .tabItem {
                     Label("Einstellungen", systemImage: "gear")
                 }
         }
-      
-        }
     }
-  
+}
 
 
 struct MainView_Previews: PreviewProvider {

@@ -22,12 +22,8 @@ struct RecipeDetailView: View {
             
             ScrollView {
                 VStack(alignment: .center, spacing: 20) {
-                    
                     HStack {
                         Spacer()
-                        
-                        
-                        
                             .padding()
                     }
                     
