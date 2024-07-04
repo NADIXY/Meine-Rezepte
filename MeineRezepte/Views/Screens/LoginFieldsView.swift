@@ -2,7 +2,7 @@
 //  LoginFieldsView.swift
 //  MeineRezepte
 //
-//  Created by Lutz Brückner on 01.07.24.
+//  Created by Nadia Marina Gaspar Baptista on 01.07.24.
 //
 
 import SwiftUI

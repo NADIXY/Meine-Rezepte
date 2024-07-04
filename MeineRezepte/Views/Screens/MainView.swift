@@ -2,7 +2,7 @@
 //  MainView.swift
 //  MeineRezepte
 //
-//  Created by Lutz Brückner on 01.07.24.
+//  Created by Nadia Marina Gaspar Baptista on 01.07.24.
 //
 
 import SwiftUI
@@ -15,7 +15,7 @@ struct MainView: View {
     var body: some View {
         TabView {
             // Tab für die Liste der Rezepte
-            NavigationView {
+            NavigationStack {
                 RecipeListView(recipes: $recipes, favoritesCount: $favoritesCount, shoppingList: $shoppingList)
                     .navigationTitle("Rezepte")
             }
@@ -37,6 +37,7 @@ struct MainView: View {
         }
     }
 }
+
 
 
 struct MainView_Previews: PreviewProvider {

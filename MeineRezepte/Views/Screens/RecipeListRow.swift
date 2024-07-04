@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct RecipeListRow: View {
     @Binding var recipe: Recipe
     var isFavorite: Bool
@@ -17,8 +15,8 @@ struct RecipeListRow: View {
         HStack {
             Image(recipe.foodImage.rawValue)
                 .resizable()
-                .frame(width: 50, height: 50)
-                .clipShape(Circle())
+                .frame(width: 100, height: 100)
+                .cornerRadius(8)
                 .overlay(
                     isFavorite ? Image(systemName: "heart.fill").foregroundColor(.red) : nil
                 )
@@ -35,3 +33,4 @@ struct RecipeListRow: View {
         .padding()
     }
 }
+

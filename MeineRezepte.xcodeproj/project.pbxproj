@@ -18,7 +18,7 @@
 		4659D15F2B88A46C00CC12EC /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659D1592B88A46C00CC12EC /* Content.swift */; };
 		A97DB7422C3584A80079F960 /* Test File.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97DB7412C3584A80079F960 /* Test File.swift */; };
 		A98C542C2C32A09200910691 /* LoginFieldsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C542B2C32A09200910691 /* LoginFieldsView.swift */; };
-		A98C542E2C32A0ED00910691 /* RecipeListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C542D2C32A0ED00910691 /* RecipeListItemView.swift */; };
+		A98EA48D2C3670A500DD6271 /* AddRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98EA48C2C3670A500DD6271 /* AddRecipeView.swift */; };
 		A9B678082C32DBCD0068F4B9 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B678072C32DBCD0068F4B9 /* MainView.swift */; };
 		A9E02E6F2C3414730071629A /* RecipeListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E02E6E2C3414730071629A /* RecipeListRow.swift */; };
 		A9E02E712C341C300071629A /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E02E702C341C300071629A /* RecipeListView.swift */; };
@@ -38,7 +38,7 @@
 		4659D1592B88A46C00CC12EC /* Content.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		A97DB7412C3584A80079F960 /* Test File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test File.swift"; sourceTree = "<group>"; };
 		A98C542B2C32A09200910691 /* LoginFieldsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFieldsView.swift; sourceTree = "<group>"; };
-		A98C542D2C32A0ED00910691 /* RecipeListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListItemView.swift; sourceTree = "<group>"; };
+		A98EA48C2C3670A500DD6271 /* AddRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeView.swift; sourceTree = "<group>"; };
 		A9B678072C32DBCD0068F4B9 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		A9E02E6E2C3414730071629A /* RecipeListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListRow.swift; sourceTree = "<group>"; };
 		A9E02E702C341C300071629A /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
@@ -118,12 +118,12 @@
 			children = (
 				4659D1472B88A2B900CC12EC /* ContentView.swift */,
 				A98C542B2C32A09200910691 /* LoginFieldsView.swift */,
-				A98C542D2C32A0ED00910691 /* RecipeListItemView.swift */,
 				A9B678072C32DBCD0068F4B9 /* MainView.swift */,
 				A9E02E6E2C3414730071629A /* RecipeListRow.swift */,
 				A9E02E702C341C300071629A /* RecipeListView.swift */,
 				A9E02E722C341CEF0071629A /* RecipeDetailView.swift */,
 				A97DB7412C3584A80079F960 /* Test File.swift */,
+				A98EA48C2C3670A500DD6271 /* AddRecipeView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -208,6 +208,7 @@
 			files = (
 				4659D15C2B88A46C00CC12EC /* Date+Formatting.swift in Sources */,
 				A9B678082C32DBCD0068F4B9 /* MainView.swift in Sources */,
+				A98EA48D2C3670A500DD6271 /* AddRecipeView.swift in Sources */,
 				4659D15F2B88A46C00CC12EC /* Content.swift in Sources */,
 				A9E02E6F2C3414730071629A /* RecipeListRow.swift in Sources */,
 				A97DB7422C3584A80079F960 /* Test File.swift in Sources */,
@@ -216,7 +217,6 @@
 				A9E02E732C341CEF0071629A /* RecipeDetailView.swift in Sources */,
 				A98C542C2C32A09200910691 /* LoginFieldsView.swift in Sources */,
 				A9E02E712C341C300071629A /* RecipeListView.swift in Sources */,
-				A98C542E2C32A0ED00910691 /* RecipeListItemView.swift in Sources */,
 				4659D1482B88A2B900CC12EC /* ContentView.swift in Sources */,
 				4659D1462B88A2B900CC12EC /* MeineRezepteApp.swift in Sources */,
 			);
