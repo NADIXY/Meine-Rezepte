@@ -90,8 +90,17 @@ struct ContentView: View {
             .padding()
         }
         .fullScreenCover(isPresented: $showMainView) {
-            MainView(recipes: $recipes, favoritesCount: $favoritesCount, shoppingList: $shoppingList)
+            MainView(recipes: $recipes, favoritesCount: $favoritesCount, shoppingList: $shoppingList, showMainView: $showMainView)
         }
+        .onChange(of: showMainView) { newValue, transaction in
+            if !newValue {
+                username = ""
+                password = ""
+                usernameError = nil
+                passwordError = nil
+            }
+        }
+
     }
 
     // MARK: - Methoden

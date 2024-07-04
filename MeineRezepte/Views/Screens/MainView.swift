@@ -11,7 +11,9 @@ struct MainView: View {
     @Binding var recipes: [Recipe]
     @Binding var favoritesCount: Int
     @Binding var shoppingList: [String]
-    
+    @Binding var showMainView: Bool
+    @State private var isShoppingListPresented: Bool = false
+
     var body: some View {
         TabView {
             // Tab für die Liste der Rezepte
@@ -24,13 +26,18 @@ struct MainView: View {
             }
             .badge(favoritesCount)
             
-            Text("Einkaufsliste")
-                .tabItem {
-                    Label("Einkaufsliste", systemImage: "cart")
-                }
-                .badge(shoppingList.count)
+            // Tab für die Einkaufsliste
+            NavigationStack {
+                ShoppingListView(shoppingList: $shoppingList, recipes: $recipes, isPresented: $isShoppingListPresented)
+                    .navigationTitle("Einkaufsliste")
+            }
+            .tabItem {
+                Label("Einkaufsliste", systemImage: "cart")
+            }
+            .badge(shoppingList.count)
             
-            Text("Einstellungen")
+            // Tab für die Einstellungen
+            SettingsView(showMainView: $showMainView)
                 .tabItem {
                     Label("Einstellungen", systemImage: "gear")
                 }
@@ -38,10 +45,8 @@ struct MainView: View {
     }
 }
 
-
-
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(recipes: .constant(Content.defaultRecipes), favoritesCount: .constant(0), shoppingList: .constant([]))
+        MainView(recipes: .constant([]), favoritesCount: .constant(0), shoppingList: .constant([]), showMainView: .constant(true))
     }
 }

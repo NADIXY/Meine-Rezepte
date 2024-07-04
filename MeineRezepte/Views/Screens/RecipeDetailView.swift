@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RecipeDetailView: View {
+    @State private var selectedIngredients: Set<String> = []
     @Binding var recipe: Recipe
     @Binding var favoritesCount: Int
     @Binding var shoppingList: [String]
@@ -109,7 +110,10 @@ struct RecipeDetailView: View {
         if let index = shoppingList.firstIndex(of: ingredient) {
             shoppingList.remove(at: index)
         } else {
-            shoppingList.append(ingredient)
+            if !shoppingList.contains(ingredient) {
+                shoppingList.append(ingredient)
+                
+            }
         }
     }
 }

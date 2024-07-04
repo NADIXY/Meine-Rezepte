@@ -19,7 +19,7 @@ struct AddRecipeView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .leading, spacing: 20) {
                 // Angepasste Navigations Bar
                 HStack {
@@ -141,15 +141,16 @@ struct AddRecipeView: View {
                             )
                     }
                     
-                    
-                    VStack(spacing: 5) {
-                        ForEach(ingredients, id: \.self) { ingredient in
-                            Text(ingredient)
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .foregroundColor(.gray)
-                                .background(Color(.systemGray6))
-                                .cornerRadius(8)
+                    ScrollView {
+                        VStack(spacing: 5) {
+                            ForEach(ingredients, id: \.self) { ingredient in
+                                Text(ingredient)
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .foregroundColor(.gray)
+                                    .background(Color(.systemGray6))
+                                    .cornerRadius(8)
+                            }
                         }
                     }
                 }
