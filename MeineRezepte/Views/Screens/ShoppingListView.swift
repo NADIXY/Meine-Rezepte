@@ -2,8 +2,9 @@
 //  ShoppingListView.swift
 //  MeineRezepte
 //
-//  Created by Nadia Marina Gaspar Baptista on 04.07.24.
+//  Created by Lutz und Nadia on 01.07.24.
 //
+
 
 import SwiftUI
 
@@ -41,8 +42,8 @@ struct ShoppingListView: View {
             }
         }
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button {
+            ToolbarItem(placement: .navigationBarTrailing) {        // beim klick auf den pfeil nach unten wird die Liste alphabetisch geordnet A-Z
+                Button {                                            // beim klick auf den pfeil nach oben wird die Reihenfolge gedreht von Z-A
                     sortByAlphabeticalOrder.toggle()
                 } label: {
                     Image(systemName: sortByAlphabeticalOrder ? "arrow.up" : "arrow.down")
@@ -51,7 +52,7 @@ struct ShoppingListView: View {
         }
     }
     
-    private func deleteItems(at offsets: IndexSet) {
+    private func deleteItems(at offsets: IndexSet) {        // Funktion zum löschen der Items
     shoppingList.remove(atOffsets: offsets)
 }
 

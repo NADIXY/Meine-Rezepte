@@ -2,10 +2,11 @@
 //  Content.swift
 //  ProjektwocheOne
 //
-//  Created by Leonid Riedel on 15.02.24.
+//  Created by Lutz und Nadia 01.07.2024.
 //
 
 import Foundation
+
 enum Content {
     static let correctUsername = "U"
     static let correctPassword = "1"

@@ -2,7 +2,7 @@
 //  RecipeDetailView.swift
 //  MeineRezepte
 //
-//  Created by Nadia Marina Gaspar Baptista on 02.07.24.
+// Created by Lutz und Nadia on 01.07.24.
 //
 
 import SwiftUI
@@ -12,6 +12,7 @@ struct RecipeDetailView: View {
     @Binding var recipe: Recipe
     @Binding var favoritesCount: Int
     @Binding var shoppingList: [String]
+    @AppStorage("isDarkMode") private var isDarkMode = false
 
     var body: some View {
         ZStack {
@@ -32,7 +33,7 @@ struct RecipeDetailView: View {
                         Text(recipe.title)
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                            .foregroundColor(.black)
+                            .foregroundColor(isDarkMode ? .white : .black)
                             .padding(.top, 40)
                         
                         Image(recipe.foodImage.rawValue)
@@ -44,23 +45,23 @@ struct RecipeDetailView: View {
                         
                         Text(recipe.description)
                             .font(.subheadline)
-                            .foregroundColor(.black)
+                            .foregroundColor(isDarkMode ? .white : .black)
                             .padding()
-                            .background(Color.white)
+                            .background(isDarkMode ? Color.gray : Color.white)
                             .cornerRadius(10)
                             .shadow(radius: 5)
                             .frame(maxWidth: 350)
                         
                         Text("Zutaten")
                             .font(.headline)
-                            .foregroundColor(.black)
+                            .foregroundColor(isDarkMode ? .white : .black)
                         
                         VStack(spacing: 10) {
                             ForEach(recipe.ingredients, id: \.self) { ingredient in
                                 HStack {
                                     Text(ingredient)
                                         .font(.footnote) // Schriftgröße verkleinern
-                                        .foregroundColor(.black)
+                                        .foregroundColor(isDarkMode ? .white : .black)
                                     
                                     Spacer().frame(width: 10) // Leerraum hinzufügen
                                     
@@ -73,7 +74,7 @@ struct RecipeDetailView: View {
                                     }
                                 }
                                 .padding()
-                                .background(Color.white)
+                                .background(isDarkMode ? Color.gray : Color.white)
                                 .cornerRadius(10)
                                 .shadow(radius: 5)
                                 .frame(maxWidth: 300, alignment: .leading) // Breite anpassen

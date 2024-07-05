@@ -2,7 +2,7 @@
 //  RecipeListView.swift
 //  MeineRezepte
 //
-//  Created by Nadia Marina Gaspar Baptista on 01.07.24.
+//  Created by Lutz und Nadia on 01.07.24.
 //
 
 import SwiftUI
@@ -12,6 +12,7 @@ struct RecipeListView: View {
     @Binding var favoritesCount: Int
     @Binding var shoppingList: [String]
     @State private var showAddRecipeView = false
+    @AppStorage("isDarkMode") private var isDarkMode = false
 
     var body: some View {
         NavigationStack {
@@ -49,11 +50,14 @@ struct RecipeListView: View {
                     }) {
                         Image(systemName: "plus")
                     }
+                    
                 }
             }
             .sheet(isPresented: $showAddRecipeView) {
                 AddRecipeView(recipes: $recipes)
+                   
             }
+            .preferredColorScheme(isDarkMode ? .dark : .light)
         }
     }
 

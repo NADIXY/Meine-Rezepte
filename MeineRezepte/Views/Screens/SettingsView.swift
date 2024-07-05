@@ -2,24 +2,32 @@
 //  SettingsView.swift
 //  MeineRezepte
 //
-//  Created by Nadia Marina Gaspar Baptista on 04.07.24.
+//  Created by Lutz und Nadia on 04.07.24.
 //
 
 import SwiftUI
 
 struct SettingsView: View {
     @Binding var showMainView: Bool
-
+    @AppStorage("isDarkMode") private var isDarkMode = false
+    
     var body: some View {
         VStack {
             NavigationStack {
                 Form {
-                    Section(header: Text("Allgemeine Informationen")) {
-                        Text("Dies ist eine Rezept-App, die Ihnen hilft, Ihre Lieblingsrezepte zu verwalten.")
-                        Link("Besuchen Sie unsere Webseite", destination: URL(string: "https://example.com")!)
-                        Text("© 2024 MeineRezepte")
+                    Section(header: Text("Info")) {
+                        Text("Projektwoche 1 - SwiftUI")
+                        Link("syntax-institut.de", destination: URL(string: "https://www.syntax-institut.de")!)
+                        Text("© Syntax-Institut, 2024")
                     }
+                    Section(header: Text("Dark Mode")) {     // Umschalter Dark/Light hierv wird der Zustand von isDarkMode festgelegt
+                        Toggle(isOn: $isDarkMode) {
+                            Text("Dark Mode")
+                        }
+                    }
+                    
                 }
+                
                 .navigationTitle("Einstellungen")
             }
             

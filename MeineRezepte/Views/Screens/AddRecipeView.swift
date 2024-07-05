@@ -2,7 +2,7 @@
 //  AddRecipeView.swift
 //  MeineRezepte
 //
-//  Created by Nadia Marina Gaspar Baptista on 04.07.24.
+//  Created by Lutz und Nadia on 02.07.24.
 //
 
 import SwiftUI
@@ -17,8 +17,10 @@ struct AddRecipeView: View {
     @State private var showImagePicker = false
     @State private var showAlert = false
     @Environment(\.presentationMode) var presentationMode
+    @AppStorage("isDarkMode") private var isDarkMode = false
 
     var body: some View {
+        
         NavigationStack {
             VStack(alignment: .leading, spacing: 20) {
                 // Angepasste Navigations Bar
@@ -26,6 +28,7 @@ struct AddRecipeView: View {
                     Spacer()
                     Text("Neues Rezept")
                         .font(.headline)
+                        
                     Spacer()
                     Button(action: {
                         self.presentationMode.wrappedValue.dismiss()
@@ -45,15 +48,15 @@ struct AddRecipeView: View {
                     
                     TextField("Rezeptname", text: $title)
                         .padding()
-                        .background(Color(.systemGray6))
-                        .foregroundColor(.gray)
+                        .background(isDarkMode ? Color.gray : Color(.systemGray6))
+                        .foregroundColor(isDarkMode ? .white : .gray)
                         .cornerRadius(8)
                     
                     TextEditor(text: $description)
                         .frame(height: 100)
                         .padding()
-                        .background(Color(.systemGray6))
-                        .foregroundColor(.gray)
+                        .background(isDarkMode ? Color.gray : Color(.systemGray6))
+                        .foregroundColor(isDarkMode ? .white : .gray)
                         .cornerRadius(8)
                 }
                 
@@ -68,7 +71,7 @@ struct AddRecipeView: View {
                     }) {
                         HStack {
                             Text(selectedImage == nil ? "Bild auswählen" : selectedImage!.rawValue)
-                                .foregroundColor(.blue)
+                                .foregroundColor(isDarkMode ? .white : .blue)
                             
                             Spacer()
                             
@@ -85,33 +88,39 @@ struct AddRecipeView: View {
                                     .frame(width: 30, height: 30)
                                     .background(
                                         Circle()
-                                            .fill(Color.gray.opacity(0.3))
+                                            .fill(Color.brown.opacity(0.3))
                                             .frame(width: 50, height: 50)
                                     )
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(isDarkMode ? .white : .blue)
                             }
                             
                             Image(systemName: "chevron.right")
-                                .foregroundColor(.gray)
+                                .foregroundColor(isDarkMode ? .white : .gray)
                         }
                         .padding()
-                        .background(Color(.systemGray6))
+                        .background(isDarkMode ? Color.gray : Color(.systemGray6))
                         .cornerRadius(8)
                     }
                     .sheet(isPresented: $showImagePicker) {
                         NavigationStack {
                             ImagePicker(selectedImage: $selectedImage)
-                                .navigationBarTitle("Bild auswählen", displayMode: .inline)
+                                .navigationBarTitle("Bild auswählen")
+                                .navigationBarTitleDisplayMode(.inline)
                                 .navigationBarItems(leading: Button(action: {
                                     showImagePicker = false
                                 }) {
+                                    
                                     Image(systemName: "chevron.left")
-                                        .foregroundColor(.blue)
+                                        .foregroundColor(isDarkMode ? .white : .blue)
                                     Text("Zurück")
-                                        .foregroundColor(.blue)
+                                        .foregroundColor(isDarkMode ? .white : .blue)
                                         
                                 })
+                                .background(isDarkMode ? Color.black.edgesIgnoringSafeArea(.all) : Color.white.edgesIgnoringSafeArea(.all))
+                                .environment(\.colorScheme, isDarkMode ? .dark : .light)
+                                
                         }
+                        .preferredColorScheme(isDarkMode ? .dark : .light)
                     }
                 }
                 
@@ -124,7 +133,7 @@ struct AddRecipeView: View {
                     HStack {
                         TextField("Zutat hinzufügen", text: $ingredientText)
                             .padding()
-                            .background(Color(.systemGray6))
+                            .background(isDarkMode ? Color.gray : Color(.systemGray6))
                             .cornerRadius(8)
                             .overlay(
                                 HStack {
@@ -133,7 +142,7 @@ struct AddRecipeView: View {
                                         addIngredient()
                                     }) {
                                         Image(systemName: "plus")
-                                            .foregroundColor(.gray)
+                                            .foregroundColor(isDarkMode ? .white : .gray)
                                             .imageScale(.large)
                                             .padding(.trailing)
                                     }
@@ -147,8 +156,8 @@ struct AddRecipeView: View {
                                 Text(ingredient)
                                     .padding()
                                     .frame(maxWidth: .infinity)
-                                    .foregroundColor(.gray)
-                                    .background(Color(.systemGray6))
+                                    .foregroundColor(isDarkMode ? .white : .gray)
+                                    .background(isDarkMode ? Color.gray : Color(.systemGray6))
                                     .cornerRadius(8)
                             }
                         }
@@ -161,10 +170,10 @@ struct AddRecipeView: View {
                 }) {
                     Text("Speichern")
                         .font(.headline)
-                        .foregroundColor(.blue)
+                        .foregroundColor(isDarkMode ? .white : .blue)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color(.systemGray6))
+                        .background(isDarkMode ? Color.gray : Color(.systemGray6))
                         .cornerRadius(8)
                 }
                 .padding(.top)
@@ -177,6 +186,7 @@ struct AddRecipeView: View {
             .padding()
             .navigationBarHidden(true)
         }
+        .preferredColorScheme(isDarkMode ? .dark : .light)
     }
 
     private func addIngredient() {

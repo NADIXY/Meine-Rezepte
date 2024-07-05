@@ -16,11 +16,15 @@ struct ContentView: View {
     @State private var recipes: [Recipe] = Content.defaultRecipes
     @State private var favoritesCount: Int = 0
     @State private var shoppingList: [String] = []
+    @AppStorage("isDarkMode") // Wrapper für Einstellungen über ganze App hinweg. Er ermöglicht den Zugriff auf ein User Defaults Objekt hier Dark/Light Modus
+    private var isDarkMode = false // Zustandsvariable für den Dark/Light Modus der in der SettingsView ausgewählt ist
+    
 
     private let correctUsername = Content.correctUsername
     private let correctPassword = Content.correctPassword
 
     var body: some View {
+       
         ZStack {
             // Hintergrundbild
             Image("apfelkuchen")
@@ -33,7 +37,7 @@ struct ContentView: View {
                 // Titel und Bild
                 Text("MeineRezepte")
                     .font(.largeTitle)
-                    .foregroundColor(.black)
+                    .foregroundColor(isDarkMode ? .white : .black)
 
                 Image("apfelkuchen")
                     .resizable()
@@ -54,7 +58,7 @@ struct ContentView: View {
                     }
                     TextField("Benutzername", text: $username)
                         .padding()
-                        .background(Color.white)
+                        .background(isDarkMode ? Color.gray : Color.white)  // Benutzerdefiniertes Farbshema für Dark/Light
                         .cornerRadius(10)
                         .shadow(radius: 5)
                         .frame(maxWidth: 300)
@@ -69,7 +73,7 @@ struct ContentView: View {
                     }
                     SecureField("Passwort", text: $password)
                         .padding()
-                        .background(Color.white)
+                        .background(isDarkMode ? Color.gray : Color.white)
                         .cornerRadius(10)
                         .shadow(radius: 5)
                         .frame(maxWidth: 300)
@@ -91,16 +95,18 @@ struct ContentView: View {
         }
         .fullScreenCover(isPresented: $showMainView) {
             MainView(recipes: $recipes, favoritesCount: $favoritesCount, shoppingList: $shoppingList, showMainView: $showMainView)
+                .preferredColorScheme(isDarkMode ? .dark : .light)
         }
-        .onChange(of: showMainView) { newValue, transaction in
+        .onChange(of: showMainView) { newValue, transaction in         // nach dem Logout werden die Ihnhalte der Login Eingabefelder zurückgesetzt
             if !newValue {
                 username = ""
                 password = ""
                 usernameError = nil
                 passwordError = nil
             }
+            
         }
-
+        .preferredColorScheme(isDarkMode ? .dark : .light)    // wählt das Farbshema basierend auf den Wert der isDarkMode Variable
     }
 
     // MARK: - Methoden
